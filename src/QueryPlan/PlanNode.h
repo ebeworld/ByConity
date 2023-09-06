@@ -46,6 +46,7 @@
 #include <QueryPlan/MergeSortingStep.h>
 #include <QueryPlan/MergingAggregatedStep.h>
 #include <QueryPlan/MergingSortedStep.h>
+#include <QueryPlan/NBAccelerationStep.h>
 #include <QueryPlan/OffsetStep.h>
 #include <QueryPlan/PartialSortingStep.h>
 #include <QueryPlan/PartitionTopNStep.h>

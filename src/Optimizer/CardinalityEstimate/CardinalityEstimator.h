@@ -72,6 +72,7 @@ public:
     PlanNodeStatisticsPtr visitExchangeStep(const ExchangeStep & step, CardinalityContext & context) override;
     PlanNodeStatisticsPtr visitRemoteExchangeSourceStep(const RemoteExchangeSourceStep &, CardinalityContext &) override;
     PlanNodeStatisticsPtr visitTableScanStep(const TableScanStep & step, CardinalityContext & card_context) override;
+    PlanNodeStatisticsPtr visitNBAccelerationStep(const NBAccelerationStep & step, CardinalityContext & card_context) override;
     PlanNodeStatisticsPtr visitReadNothingStep(const ReadNothingStep &, CardinalityContext &) override;
     PlanNodeStatisticsPtr visitReadStorageRowCountStep(const ReadStorageRowCountStep &, CardinalityContext &) override;
     PlanNodeStatisticsPtr visitValuesStep(const ValuesStep & step, CardinalityContext &) override;

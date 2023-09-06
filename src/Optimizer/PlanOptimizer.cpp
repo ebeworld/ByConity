@@ -22,6 +22,7 @@
 #include <Optimizer/Rewriter/AddExchange.h>
 #include <Optimizer/Rewriter/ColumnPruning.h>
 #include <Optimizer/Rewriter/MaterializedViewRewriter.h>
+#include <Optimizer/Rewriter/NBAcceleration.h>
 #include <Optimizer/Rewriter/PredicatePushdown.h>
 #include <Optimizer/Rewriter/RemoveApply.h>
 #include <Optimizer/Rewriter/RemoveRedundantSort.h>
@@ -100,6 +101,7 @@ const Rewriters & PlanOptimizer::getSimpleRewriters()
         std::make_shared<IterativeRewriter>(Rules::pushIntoTableScanRules(), "PushIntoTableScan"),
 
         std::make_shared<IterativeRewriter>(Rules::explainAnalyzeRules(), "ExplainAnalyze"),
+        std::make_shared<NBAcceleration>(),
     };
     return simple_rewrites;
 }
@@ -235,6 +237,7 @@ const Rewriters & PlanOptimizer::getFullRewriters()
         // TODO cost-based projection push down
 
         std::make_shared<IterativeRewriter>(Rules::explainAnalyzeRules(), "ExplainAnalyze"),
+        std::make_shared<NBAcceleration>(),
     };
 
     return full_rewrites;

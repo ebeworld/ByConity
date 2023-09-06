@@ -180,6 +180,12 @@ PlanNodeStatisticsPtr CardinalityVisitor::visitTableScanStep(const TableScanStep
     return stats;
 }
 
+PlanNodeStatisticsPtr CardinalityVisitor::visitNBAccelerationStep(const NBAccelerationStep & step, CardinalityContext & card_context) 
+{
+    PlanNodeStatisticsPtr stats = TableScanEstimator::estimate(card_context.context, *step.getStep());
+    return stats;
+}
+
 PlanNodeStatisticsPtr CardinalityVisitor::visitReadNothingStep(const ReadNothingStep &, CardinalityContext &)
 {
     return std::make_shared<PlanNodeStatistics>();

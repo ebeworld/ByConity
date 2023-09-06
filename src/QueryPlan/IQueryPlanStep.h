@@ -139,6 +139,7 @@ public:
         M(Sorting) \
         M(MergingAggregated) \
         M(MergingSorted) \
+        M(NBAcceleration) \
         M(Offset) \
         M(PartitionTopN) \
         M(PartialSorting) \

@@ -29,6 +29,6 @@ namespace DB
 
     PlanNodePtr NBAccelerationVisitor::visitTableScanNode(TableScanNode & node, Void & require)
     {
-        return std::make_shared<NBAccelerationNode>(node.getId(), std::make_shared<NBAccelerationStep>(node.getStep()));
+        return std::make_shared<NBAccelerationNode>(context->nextNodeId(), std::make_shared<NBAccelerationStep>(node.getStep()));
     }
 }

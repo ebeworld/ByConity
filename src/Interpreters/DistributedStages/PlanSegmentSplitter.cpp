@@ -314,6 +314,12 @@ PlanSegmentInputs PlanSegmentVisitor::findInputs(QueryPlan::Node * node)
         input->setStorageID(table_scan_step->getStorageID());
         return {input};
     }
+    else if (auto * nb_acceleration_step = dynamic_cast<NBAccelerationStep *>(node->step.get()))
+    {
+        auto input = std::make_shared<PlanSegmentInput>(nb_acceleration_step->getStep()->getOutputStream().header, PlanSegmentType::SOURCE);
+        input->setStorageID(nb_acceleration_step->getStep()->getStorageID());
+        return {input};
+    }
     else if (auto * read_nothing = dynamic_cast<ReadNothingStep *>(node->step.get()))
     {
         auto input = std::make_shared<PlanSegmentInput>(read_nothing->getOutputStream().header, PlanSegmentType::SOURCE);
